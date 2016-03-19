@@ -1,0 +1,15 @@
+<% include ../include/admin_header %>
+<form id="js_file_post_form" method="post" action="/upload" enctype='multipart/form-data' >
+	<input type="file" name='file1'/>
+	<button type="submit">上传</button>
+</form>
+<img src="" id="result_pic">
+<% include ../include/javascript%>
+<script type="text/javascript" >
+$(document).ready(function(){
+	$("#js_file_post_form").ajaxForm(function(data) {
+		alert(data);
+	});
+});
+</script>
+<% include ../include/admin_footer %>

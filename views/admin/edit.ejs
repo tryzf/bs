@@ -1,0 +1,14 @@
+<% include ../include/admin_header %>
+<form method="post">
+	<div class="post_module">
+		<p class="title_p">标题:</p>
+		<input type="text" class="title" value="<%= post.title %>" disabled="disabled" name="title" /><br/>
+		<p class="title_p">标签</p>
+		<input type="text" name="tags" value="<%= post.tags %>" disabled="disabled"/>
+		<p class="title_p">正文: </p>	
+		<textarea name="post" class="content"><%= post.post %></textarea><br>
+		<button type="submit" class="post_btn">保存修改</button>
+	</div>
+</form>
+<% include ../include/javascript %>
+<% include ../include/admin_footer %>

@@ -1,0 +1,15 @@
+<% include header %>
+<div class="reg_bg">
+</div>
+<section class="reg_window">
+		<h2>帐号注册</h2>
+		<p class="input_style"><input type="text" placeholder="登录帐号" name="name"/></p>
+		<p class="input_style"><input type="password" placeholder="登录密码" name="password"/></p>
+		<p class="input_style"><input type="password" placeholder="确定密码" name="password_sure"/></p>
+		<p class="input_style"><input type="email" placeholder="Email" name="email"/></p>
+		<p class="input_style"><button class="reg_btn" type="success" onclick="regUser()">确定注册</button></p>
+	<a  class="go_home loing_reg_btn" href="/" title="返回首页">主页</a>
+	<a  class="loing_reg_btn go_login" href="/login" title="返回首页">登录</a>
+</section>
+<%- include include/user_js %>
+<% include footer %>

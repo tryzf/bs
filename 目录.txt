@@ -1,0 +1,28 @@
+views文件夹下面的文件
+index.ejs     博客主页
+login         登录页
+reg           注册页
+tag           某个标签的文章详情页
+tags          某个标签的所有文章
+user          某个帐号的文章列表
+search        搜索结果文章列表
+post          发表文章页
+header        前台共用头部
+footer        前台共用脚部
+comment       评论模块
+article       文章详情页
+archive       文章列表
+edit          已有文章编辑页面
+upload        文件上传
+-------------------include
+paging             分页
+#######################
+routes文件夹
+ index   路由
+
+#############
+ models文件夹下    数据库操作
+——————————————————————
+comment.js   评论
+user   登录注册
+post   所有的操作

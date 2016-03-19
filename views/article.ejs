@@ -1,0 +1,27 @@
+<% include header %>
+	<nav class="article_nav">
+		<ul class="wrap">
+			<li><a href="/">首页</a></li>
+		</ul>
+	</nav>
+	<div class="article_main wrap">
+		<p class="article_title"><a href="/u/<%= post.name %>/<%= post.time.day%>/<%= post.title %>"><%= post.title  %> </a></p>
+		<div class="article_info">
+			<div class="fl">
+				作者：<a href="/u/<%= post.name %>"><%= post.name %></a> | 日期：<%= post.time.minute %>
+			</div>
+			<div class="fr">
+				<% if(user && (user.name == post.name)){%>
+					<div><span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
+					<span><a class="remove" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
+					</div>
+				<% }%>
+			</div>
+		</div>
+		<div class="article_content">
+			<%-post.post%>
+		</div>
+	</div>
+<% include comment %>
+<%- include include/user_js %>
+<% include footer %>

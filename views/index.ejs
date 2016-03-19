@@ -1,0 +1,85 @@
+<%- include header %>
+	<header>
+		<section class="wrap">
+			<figure>
+				<img src="images/header.jpg" id="js_header_pic">
+				<figcaption id="js_blog_title">太坦白的男孩</figcaption>
+			</figure>
+			<p id="js_blog_motto">现在的位置不重要，重要的是前进的方向！</p>
+		</section>
+		<nav>
+			<ul class="wrap">
+				<li><a href="/">首页</a></li>
+				<li><a href="/archive">文章列表</a></li>
+				<li><a href="/tags">标签</a></li>
+				<li><a href="/">关于我</a></li>
+				<% if(user){ %>
+				<li><a href="/post">个人中心</a></li>
+				<li><a href="/logout">退出</a></li>
+				<% } %>
+			</ul>
+		</nav>
+	</header>
+	<div class="wrap main clearfix">
+		<div class="main_left fl">
+			<aside>
+				<h3 class="main_color title_box">最新博客</h3>
+				<ul id="new_blog_title">
+				</ul>
+			</aside>	
+			<aside>
+				<h3 class="main_color title_box">搜索文章</h3>
+				<form action="/search" method="GET" class="search_form">
+					<input type="text" name="keyword" placeholder="标题模糊搜索" />
+					<button type="submit">搜索</button>
+				</form>
+			</aside>						
+			<aside>
+				<h3 class="main_color title_box">热门博客</h3>
+				<ul id="js_hot_list">
+
+				</ul>
+			</aside>
+		</div>
+		<div class="main_right fl">
+			<% posts.forEach(function (post, index){ %>
+			<article>
+				<h2 class="article_title"><a href="/u/<%= post.name%>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+				<a href="/u/<%= post.name %>"><img src="<%= post.head %>"></a>
+				<div class="article_content">
+					<%- post.post%>
+				</div>
+				<div class="article_footer">
+					<span>分类：
+						<% for(var i = 0; i < post.tags.length; i += 1){%>
+							<% if(post.tags[i] !== ''){%>
+							<a class="tag" href="/tags/<%= post.tags %>"><%= post.tags[i] %></a>
+							<% }%>
+						<% } %>
+					</span>					
+					<ul>
+						<li><%= post.time.minute %></li>
+						<li>作者：<%= post.name %></li>
+						<li>围观：<%= post.pv %></li>
+						<li>吐槽：<%= post.comments.length %></li>
+						<li><a href="/u/<%= post.name%>/<%= post.time.day %>/<%= post.title %>">阅读全文</a></li>
+					</ul>					
+				</div>
+			</article>
+			<% }) %>
+			<%- include include/paging %>	
+		</div>
+	<div>
+	<%- include include/user_js %>
+	<script>
+	$(document).ready(function(){
+		
+		GetHotList(function(){
+			getNewArticle(function(){
+				getUserInfo();
+			});
+		});
+
+	});
+	</script>
+<%- include footer %>
